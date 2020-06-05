@@ -1,6 +1,9 @@
 package edu.ginger.hacker;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Stream;
 
 /**
  *
@@ -69,6 +72,21 @@ public class SockMerchant {
 
         return numDup;
 
+    }
+
+    static int sockMerchantCollection(int n, int[] ar) {
+        Set<Integer> colors = new HashSet<>();
+
+        int pairs = 0;
+        for (int i = 0; i < n; i++) {
+            if (!colors.contains(ar[i])) {
+               colors.add(ar[i]);
+            } else {
+                pairs++;
+                colors.remove(ar[i]);
+            }
+        }
+        return pairs;
     }
 
     private static void constrainstsValidation(int n, int[] ar) {
